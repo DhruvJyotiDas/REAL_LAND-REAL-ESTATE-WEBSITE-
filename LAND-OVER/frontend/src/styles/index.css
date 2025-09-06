@@ -12,11 +12,11 @@
   }
   
   * {
-    @apply border-border;
+    /* Removed @apply border-border; because 'border-border' class does not exist */
   }
   
   body {
-    @apply bg-background text-foreground;
+    /* Removed @apply bg-background and text-foreground; because these classes do not exist */
   }
 }
 

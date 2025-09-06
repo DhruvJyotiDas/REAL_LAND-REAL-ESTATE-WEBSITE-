@@ -15,17 +15,37 @@
 // export default Layout
 
 
+// import React from 'react'
+// import { Outlet } from 'react-router-dom'
+// import Header from './Header'
+// // import Footer from './Footer'
+// import Footer from './Footer'
+
+
+// const Layout = () => {
+//   return (
+//     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
+//       <Header />
+//       <main className="flex-1">
+//         <Outlet />   {/* 👈 This renders Home, Properties, etc. */}
+//       </main>
+//       <Footer />
+//     </div>
+//   )
+// }
+
+// export default Layout
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from './Header'
-import Footer from './Footer'
+import Footer from './footer'
 
 const Layout = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
       <Header />
       <main className="flex-1">
-        <Outlet />   {/* 👈 This renders Home, Properties, etc. */}
+        <Outlet /> {/* Home, Properties, etc. will render here */}
       </main>
       <Footer />
     </div>
@@ -33,3 +53,4 @@ const Layout = () => {
 }
 
 export default Layout
+

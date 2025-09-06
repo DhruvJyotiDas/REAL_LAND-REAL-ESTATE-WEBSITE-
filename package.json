@@ -1,0 +1,10 @@
+{
+  "name": "real-estate-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start:all": "concurrently \"npm run dev --prefix LAND-OVER/backend\" \"npm run dev --prefix LAND-OVER/frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

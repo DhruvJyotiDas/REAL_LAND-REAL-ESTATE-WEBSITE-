@@ -16,18 +16,18 @@ const routes = require('./src/routes');
 
 const app = express();
 
+// CORS configuration
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
+
 // Trust proxy
 app.set('trust proxy', 1);
 
 // Security middleware
 app.use(helmet());
-
-// CORS configuration
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true,
-  optionsSuccessStatus: 200
-}));
 
 // Rate limiting
 const limiter = rateLimit({
@@ -75,11 +75,21 @@ app.get('/health', (req, res) => {
 app.use('/api/v1', routes);
 
 // 404 handler
-app.all('*', (req, res, next) => {
-  const err = new Error(`Route ${req.originalUrl} not found`);
-  err.statusCode = 404;
-  next(err);
+// app.all('*', (req, res, next) => {
+//   const err = new Error(`Route ${req.originalUrl} not found`);
+//   err.statusCode = 404;
+//   next(err);
+// });
+//404 handler
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
 });
+
+
+
 
 // Global error handler
 app.use(errorHandler);

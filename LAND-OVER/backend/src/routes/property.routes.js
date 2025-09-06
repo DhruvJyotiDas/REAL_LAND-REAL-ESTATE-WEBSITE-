@@ -26,8 +26,6 @@ router.get('/search', searchProperties);
 router.get('/:id', getProperty);
 
 // Protected routes
-router.use(protect); // All routes after this middleware are protected
-
 router.post('/', 
   authorize('seller', 'agent', 'admin'), 
   validateProperty, 
